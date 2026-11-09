@@ -1,0 +1,81 @@
+{
+  "trained_at": "2026-11-09T18:30:10",
+  "sklearn_version": "1.6.1",
+  "pandas_version": "2.2.3",
+  "feature_cols": [
+    "airline",
+    "source_city",
+    "departure_time",
+    "stops",
+    "arrival_time",
+    "destination_city",
+    "class",
+    "duration",
+    "days_left"
+  ],
+  "categories": {
+    "airline": [
+      "AirAsia",
+      "Air_India",
+      "GO_FIRST",
+      "Indigo",
+      "SpiceJet",
+      "Vistara"
+    ],
+    "source_city": [
+      "Bangalore",
+      "Chennai",
+      "Delhi",
+      "Hyderabad",
+      "Kolkata",
+      "Mumbai"
+    ],
+    "departure_time": [
+      "Afternoon",
+      "Early_Morning",
+      "Evening",
+      "Late_Night",
+      "Morning",
+      "Night"
+    ],
+    "stops": [
+      "one",
+      "two_or_more",
+      "zero"
+    ],
+    "arrival_time": [
+      "Afternoon",
+      "Early_Morning",
+      "Evening",
+      "Late_Night",
+      "Morning",
+      "Night"
+    ],
+    "destination_city": [
+      "Bangalore",
+      "Chennai",
+      "Delhi",
+      "Hyderabad",
+      "Kolkata",
+      "Mumbai"
+    ],
+    "class": [
+      "Business",
+      "Economy"
+    ]
+  },
+  "duration_range": [
+    0.83,
+    49.83
+  ],
+  "days_left_range": [
+    1,
+    49
+  ],
+  "test_scores": {
+    "MAE": 1239.558184689928,
+    "RMSE": 2685.3911276032554,
+    "R2": 0.985867411356262
+  },
+  "currency": "INR"
+}
