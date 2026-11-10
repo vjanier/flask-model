@@ -40,7 +40,7 @@ app = FastAPI(title="Airline Price Predictor", version="1.0")
 
 @app.get("/")
 def root():
-    return {"message": "Airline Price Predictor API", "status": "running"}
+    return {"message": "Airline Price Predictor API", "docs": "/docs"}
 
 
 class Flight(BaseModel):
