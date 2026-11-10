@@ -15,6 +15,7 @@ def load():
 
 
 model, meta = load()
+cats = meta["categories"]
 
 import time
 t = time.time()
@@ -25,8 +26,6 @@ model.predict(pd.DataFrame([{
     "class": cats["class"][0], "duration": 2.0, "days_left": 15,
 }])[meta["feature_cols"]])
 st.caption(f"One prediction took {time.time() - t:.2f}s")
-
-cats = meta["categories"]
 
 st.title("✈️ Airline Price Predictor")
 
