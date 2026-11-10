@@ -7,7 +7,6 @@ Needs airline_price_model.joblib and model_metadata.json in this folder
 """
 import json
 import os
-from contextlib import asynccontextmanager
 from typing import List
 
 import joblib
@@ -17,19 +16,31 @@ from pydantic import BaseModel, ConfigDict, Field
 
 MODEL_PATH = os.getenv("MODEL_PATH", "airline_price_model.joblib")
 META_PATH = os.getenv("META_PATH", "model_metadata.json")
-state = {}
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    state["model"] = joblib.load(MODEL_PATH)
-    with open(META_PATH) as f:
-        state["meta"] = json.load(f)
-    yield
-    state.clear()
+class _LazyState(dict):
+    """Loads model/metadata on first access (serverless doesn't reliably run lifespan)."""
+
+    def __missing__(self, key):
+        if key == "model":
+            self[key] = joblib.load(os.path.join(BASE_DIR, MODEL_PATH))
+        elif key == "meta":
+            with open(os.path.join(BASE_DIR, META_PATH)) as f:
+                self[key] = json.load(f)
+        else:
+            raise KeyError(key)
+        return self[key]
 
 
-app = FastAPI(title="Airline Price Predictor", version="1.0", lifespan=lifespan)
+state = _LazyState()
+
+app = FastAPI(title="Airline Price Predictor", version="1.0")
+
+
+@app.get("/")
+def root():
+    return {"message": "Airline Price Predictor API", "docs": "/docs"}
 
 
 class Flight(BaseModel):

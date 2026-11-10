@@ -1,8 +1,8 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
+  "functions": {
+    "app.py": {
+      "memory": 2048,
+      "maxDuration": 60
     }
-  ]
+  }
 }

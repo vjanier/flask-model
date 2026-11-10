@@ -1,5 +1,4 @@
 fastapi
-uvicorn[standard]
 joblib
-pandas
-scikit-learn   # pin to the sklearn_version in model_metadata.json
+pandas==2.2.3
+scikit-learn==1.6.1

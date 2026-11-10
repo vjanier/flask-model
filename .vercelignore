@@ -1,0 +1,6 @@
+*.csv
+*.ipynb
+.sf
+__pycache__
+.venv
+venv
