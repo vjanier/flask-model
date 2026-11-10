@@ -24,7 +24,12 @@ st.title("✈️ Airline Price Predictor")
 
 c1, c2 = st.columns(2)
 airline = c1.selectbox("Airline", cats["airline"])
-flight_class = c2.selectbox("Class", cats["class"])
+# Only Vistara and Air_India sell Business; every other airline is Economy only.
+BUSINESS_AIRLINES = {"Vistara", "Air_India"}
+class_options = cats["class"] if airline in BUSINESS_AIRLINES else ["Economy"]
+flight_class = c2.selectbox("Class", class_options, key=f"class|{airline}")
+if airline not in BUSINESS_AIRLINES:
+    c2.caption(f"{airline} only offers Economy.")
 source = c1.selectbox("From", cats["source_city"])
 dest = c2.selectbox("To", cats["destination_city"])
 
