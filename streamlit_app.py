@@ -15,6 +15,17 @@ def load():
 
 
 model, meta = load()
+
+import time
+t = time.time()
+model.predict(pd.DataFrame([{
+    "airline": cats["airline"][0], "source_city": cats["source_city"][0],
+    "departure_time": cats["departure_time"][0], "stops": cats["stops"][0],
+    "arrival_time": cats["arrival_time"][0], "destination_city": cats["destination_city"][1],
+    "class": cats["class"][0], "duration": 2.0, "days_left": 15,
+}])[meta["feature_cols"]])
+st.caption(f"One prediction took {time.time() - t:.2f}s")
+
 cats = meta["categories"]
 
 st.title("✈️ Airline Price Predictor")
