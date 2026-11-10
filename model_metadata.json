@@ -31,12 +31,12 @@
       "Mumbai"
     ],
     "departure_time": [
-      "Afternoon",
       "Early_Morning",
-      "Evening",
-      "Late_Night",
       "Morning",
-      "Night"
+      "Afternoon",
+      "Evening",
+      "Night",
+      "Late_Night"
     ],
     "stops": [
       "one",
@@ -44,12 +44,12 @@
       "zero"
     ],
     "arrival_time": [
-      "Afternoon",
       "Early_Morning",
-      "Evening",
-      "Late_Night",
       "Morning",
-      "Night"
+      "Afternoon",
+      "Evening",
+      "Night",
+      "Late_Night"
     ],
     "destination_city": [
       "Bangalore",
